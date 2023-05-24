@@ -8,13 +8,21 @@ class BaseModel:
     for other classes
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Instantiates a new object
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if kwargs:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            self.__dict__.update(kwargs)
+            #print(self.__dict__)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+
 
     def __str__(self):
         """
@@ -49,8 +57,10 @@ class BaseModel:
 """
 Manually try out the BaseModel
 """
-my_model = BaseModel()
-my_model.name = "My First Model"
+my_model = BaseModel(name="My First Model", age=15, score=105, location="Rwanda")
+#print(my_model)
+#print(type(my_model.created_at))
+print(my_model.to_dict())
 my_model.my_number = 89
 #print(my_model)
 my_model.save()
