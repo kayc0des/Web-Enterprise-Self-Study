@@ -34,7 +34,12 @@ class TestBaseModel(unittest.TestCase):
         """
         Test string representation of test_model object
         """
-        pass
+        # Call the __str__ method
+        result = self.test_model.__str__()
+
+        # Verify that the expected string representation is returned
+        expected_string = f"[BaseModel] ({self.test_model.id}) {self.test_model.__dict__}"
+        self.assertEqual(result, expected_string)
 
     def test_save(self):
         """
@@ -46,7 +51,18 @@ class TestBaseModel(unittest.TestCase):
         new_updated_at = self.test_model.updated_at
         self.assertNotEqual(initial_updated_at, new_updated_at)
 
-    
+    def test_dict(self):
+        """Call the to_dict method"""
+        obj_dict = self.test_model.to_dict()
+
+        # Verify that the returned dictionary contains the expected keys
+        self.assertIn('__class__', obj_dict)
+        self.assertIn('created_at', obj_dict)
+        self.assertIn('updated_at', obj_dict)
+
+        # Verify that the '__class__' key has the correct value
+        self.assertEqual(obj_dict['__class__'], 'BaseModel')
+
 
 if __name__ == '__main__':
     unittest.main()
