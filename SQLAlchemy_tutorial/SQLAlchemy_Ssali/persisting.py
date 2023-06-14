@@ -1,8 +1,5 @@
 from models import User, Comment
-from sqlalchemy.orm import Session
-from connect import engine
-
-session = Session(bind=engine)
+from main import session
 
 user1 = User(
     username = 'Kingsley',
