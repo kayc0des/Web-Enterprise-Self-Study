@@ -4,6 +4,7 @@ deserializes JSON File to instances
 """
 import json
 
+
 class FileStorage():
     """
     Class FileStorage
@@ -48,7 +49,7 @@ class FileStorage():
 
 
 """Alternative"""
-class FileSt():
+class FilesTorage():
     """Serializes instances to JSON file and
     Deserializes JSON file to instances"""
 
