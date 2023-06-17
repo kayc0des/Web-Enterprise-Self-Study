@@ -52,7 +52,11 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("Class name missing")
         
-
+    def do_show(self, arg):
+        """
+        Print the string representation of an instance based on the class name and id
+        """
+        pass
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
