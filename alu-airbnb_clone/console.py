@@ -1,4 +1,7 @@
 import cmd
+from models import base_model
+from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 
 # import uuid
 # from datetime import datetime
@@ -7,9 +10,9 @@ import cmd
 # from models.base_model import BaseModel
 # from models.__init__ import storage
 
-class BaseModel():
-    def __init__(self):
-        print("hello world")
+# class BaseModel():
+#     def __init__(self):
+#         print("hello world")
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -41,7 +44,9 @@ class HBNBCommand(cmd.Cmd):
             class_name = arg.strip() #get the class name from the argument
             try:
                 class_name = BaseModel()
+                class_name.save()
                 print(type(class_name))
+                print(class_name.id)
             except KeyError:
                 print(f"Error: {class_name} is nt a valid class name")
         else:
