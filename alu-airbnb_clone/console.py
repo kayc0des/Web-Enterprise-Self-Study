@@ -1,7 +1,15 @@
-import cmd 
-import sys
-from models.base_model import BaseModel
-#from models.base_model import BaseModel
+import cmd
+
+# import uuid
+# from datetime import datetime
+# import os
+# from models.engine.file_storage import FileStorage
+# from models.base_model import BaseModel
+# from models.__init__ import storage
+
+class BaseModel():
+    def __init__(self):
+        print("hello world")
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -29,7 +37,15 @@ class HBNBCommand(cmd.Cmd):
         """
         Create a new instance of BaseModel
         """
-
+        if arg:
+            class_name = arg.strip() #get the class name from the argument
+            try:
+                class_name = BaseModel()
+                print(type(class_name))
+            except KeyError:
+                print(f"Error: {class_name} is nt a valid class name")
+        else:
+            print("Class name missing")
         
 
 
