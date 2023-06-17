@@ -64,5 +64,8 @@ class BaseModel:
 """
 Manually try out the BaseModel
 """
-my_model = BaseModel(name="My First Model", age=15, score=105, location="Rwanda")
-my_model.save()
+new_model = BaseModel(name="My First Model", age=15, score=105, location="Rwanda")
+new_model.save()
+
+another_model = BaseModel(name="Kingsley", age=22, score=105, location="Cameroon")
+another_model.save()
